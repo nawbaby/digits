@@ -4,7 +4,7 @@
 #define DEBUG 0
 #define True  1
 #define False 0
-
+#define Seperator_Num 5
 int  Decimal_To_Binary( int decimal,int ret[]);
 
 int main()
@@ -40,7 +40,16 @@ while (True)
 			break;
 		}
 		//printf("I feel puzzled!");
-		printf("%d",ret[t_loop]);	
+		
+			
+		if (ret[t_loop] != 3)
+		{
+			printf("%d",ret[t_loop]);
+		} else
+		{
+			printf(" ");
+		}
+		 
 	}
 	printf("\n");
  }
@@ -52,14 +61,24 @@ int  Decimal_To_Binary( int decimal,int ret[])
 {
 	 int i = 0;
      int remainder = 0;
-	 int separator = 0
+	 
 	
 	while (decimal != 1 )  //商不可能为0  无需判断
 	{ 
+	  if( i%Seperator_Num != 4)
+	  {
 	  remainder = decimal%2;
 	  decimal = decimal/2;
 	  ret[i] = remainder;
+	  } else{
+		 ret[i] = 3; 
+	  }
 	  i++;
+	}
+	if( i%Seperator_Num == 4)
+	{
+		 ret[i] = 3; 
+		 i++;
 	}
 	ret[i] = 1; //最高位一定是1
 	return i;
